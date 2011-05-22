@@ -9,5 +9,5 @@ require 'doc_scan/scanner'
 require 'doc_scan/document'
 
 module DocScan
-  VERSION = "0.0.0"
+  VERSION = "0.0.1"
 end

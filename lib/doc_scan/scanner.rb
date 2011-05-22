@@ -16,13 +16,17 @@ module DocScan
       Dir[File.join(path, "**", "*")].select {|p| File.file?(p) }.select { |path| path =~ extensions_regexp }
     end
 
-    def run(clear = false)
+    def scan(clear = false)
       @results = nil if clear
-      @results ||= run!
+      @results ||= scan!
     end
 
-    def run!
+    def scan!
       paths.map { |path| Document.new(self, path, name_cleaner) }
+    end
+
+    def each(&block)
+      scan && @results.each(&block)
     end
 
     def extensions_regexp

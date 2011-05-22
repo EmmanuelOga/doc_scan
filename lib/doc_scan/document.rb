@@ -16,6 +16,16 @@ module DocScan
       File.extname(path)
     end
 
+    def clean_path
+      @clean_path ||= clean_path!
+    end
+
+    def clean_path!
+      b = gdata.title rescue nil
+      b = clean_name if b.nil? || b =~ /\S/
+      "#{b}#{ext}"
+    end
+
     def name
       basename[0, basename.length - ext.length]
     end
@@ -44,7 +54,9 @@ module DocScan
     private :inferred_tags!
 
     def gdata
-      @gdata ||= RISBN::GData inferred_isbn if inferred_isbn && inferred_isbn =~ /\S/
+      @gdata ||= RISBN::GData(inferred_isbn.to_s).data if inferred_isbn.to_s =~ /\S/
+    rescue
+      # do nothing, google data for this document won't be available.
     end
 
     def prefix_directories

@@ -4,8 +4,8 @@ Gem::Specification.new do |s|
   s.rubygems_version = '1.3.7'
 
   s.name              = 'doc_scan'
-  s.version           = '0.0.0'
-  s.date              = '2010-10-15'
+  s.version           = '0.0.1'
+  s.date              = '2011-05-22'
   s.rubyforge_project = 'doc_scan'
 
   s.summary     = "Utils to get infomration from documents in a folder (doc, pdf, djvu, etc.)"
