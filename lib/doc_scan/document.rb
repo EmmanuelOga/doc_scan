@@ -22,7 +22,7 @@ module DocScan
 
     def clean_path!
       b = gdata.title rescue nil
-      b = clean_name if b.nil? || b =~ /\S/
+      b = clean_name if b.nil? || b !~ /\S/
       "#{b}#{ext}"
     end
 
